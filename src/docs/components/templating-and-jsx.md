@@ -328,12 +328,16 @@ export class AppHome {
     console.log(this.textInput.value);
   }
 
+  storeTextInputRef = (el: HTMLInputElement) => {
+    this.textInput = el;
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input type="text" ref={(el) => this.textInput = el as HTMLInputElement} />
+          <input type="text" ref={this.storeTextInputRef} />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -342,7 +346,7 @@ export class AppHome {
 }
 ```
 
-In this example we are using `ref` to get a reference to our input `ref={(el) => this.textInput = el as HTMLInputElement}`. We can then use that ref to do things such as grab the value from the text input directly `this.textInput.value`.
+In this example we are using `ref` to get a reference to our input `ref={this.storeTextInputRef}`. We can then use that ref to do things such as grab the value from the text input directly `this.textInput.value`.
 
 
 ## Avoid Shared JSX Nodes
